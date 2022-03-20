@@ -6,6 +6,22 @@ def graph_inverse(graph):
     return G_inv
 
 
+def topological_sort(graph):
+    visited, ordered = set(), []
+
+    def dfs(u):
+        if u in visited:
+            return
+        visited.add(u)
+        for v in graph[u]:
+            dfs(v)
+        ordered.append(u)
+
+    for u in graph:
+        dfs(u)
+    return list(reversed(ordered))
+
+
 def graph_components(graph):
     visited, ordered = set(), []
 
