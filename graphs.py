@@ -23,18 +23,7 @@ def topological_sort(graph):
 
 
 def graph_components(graph):
-    visited, ordered = set(), []
-
-    def dfs(u):
-        if u in visited:
-            return
-        visited.add(u)
-        for v in graph[u]:
-            dfs(v)
-        ordered.append(u)
-
-    for u in graph:
-        dfs(u)
+    ordered = topological_sort(graph)
     G_inv = graph_inverse(graph)
     visited, components = set(), []
 
@@ -46,7 +35,7 @@ def graph_components(graph):
         for v in G_inv[u]:
             dfs(v)
 
-    for u in reversed(ordered):
+    for u in ordered:
         if u not in visited:
             components.append(set())
             dfs(u)
