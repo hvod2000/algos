@@ -46,7 +46,7 @@ def graph_components(graph):
         for v in G_inv[u]:
             dfs(v)
 
-    for u in graph:
+    for u in reversed(ordered):
         if u not in visited:
             components.append(set())
             dfs(u)
