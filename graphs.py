@@ -1,8 +1,8 @@
 def graph_inverse(graph):
-    G_inv = {}
+    G_inv = {u: set() for u in graph}
     for u, vs in graph.items():
         for v in vs:
-            G_inv.setdefault(v, set()).add(u)
+            G_inv[v].add(u)
     return G_inv
 
 
